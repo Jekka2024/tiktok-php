@@ -1,0 +1,39 @@
+{
+  "name": "jekka2024/tiktok-php",
+  "description": "Unofficial Tiktok Shop API Client in PHP",
+  "type": "library",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Jekka2024",
+      "email": "shijieli@jekka.ai",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.2|^8.0",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^7.3|^6.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8|^9"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jekka2024\\Tiktok\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Jekka2024\\Tiktok\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.0.x-dev"
+    }
+  }
+}
