@@ -1,6 +1,6 @@
 <?php
 
-namespace Jekka2024\Tiktok\Signer;
+namespace Jekka\Tiktok\Signer;
 
 use Psr\Http\Message\RequestInterface;
 

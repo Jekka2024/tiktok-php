@@ -8,15 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Jekka2024\Tiktok;
+namespace Jekka\Tiktok;
 
 use DateTimeInterface;
-use Jekka2024\Tiktok\Errors\TiktokShopException;
+use Jekka\Tiktok\Errors\TiktokShopException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use Jekka2024\Tiktok\Client as TiktokShopClient;
-use Jekka2024\Tiktok\Errors\ResponseException;
-use Jekka2024\Tiktok\Errors\TokenException;
+use Jekka\Tiktok\Client as TiktokShopClient;
+use Jekka\Tiktok\Errors\ResponseException;
+use Jekka\Tiktok\Errors\TokenException;
 
 abstract class Resource
 {
@@ -58,7 +58,7 @@ abstract class Resource
     }
 
     /**
-     * @throws \Jekka2024\Tiktok\Errors\TiktokShopException
+     * @throws \Jekka\Tiktok\Errors\TiktokShopException
      */
     public function call($method, $action, $params = [], $version = null)
     {

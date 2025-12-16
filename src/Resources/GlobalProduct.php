@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jekka2024\Tiktok\Resources;
+namespace Jekka\Tiktok\Resources;
 
 use GuzzleHttp\RequestOptions;
-use Jekka2024\Tiktok\Resource;
+use Jekka\Tiktok\Resource;
 
 class GlobalProduct extends Resource
 {

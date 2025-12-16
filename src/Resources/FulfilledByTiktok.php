@@ -8,9 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jekka2024\Tiktok\Resources;
+namespace Jekka\Tiktok\Resources;
 
-use Jekka2024\Tiktok\Resource;
+use Jekka\Tiktok\Resource;
 use GuzzleHttp\RequestOptions;
 
 class FulfilledByTiktok extends Resource

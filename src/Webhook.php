@@ -8,9 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jekka2024\Tiktok;
+namespace Jekka\Tiktok;
 
-use Jekka2024\Tiktok\Errors\TiktokShopException;
+use Jekka\Tiktok\Errors\TiktokShopException;
 
 class Webhook
 {

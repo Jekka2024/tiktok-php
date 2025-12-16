@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Jekka2024\Tiktok;
+namespace Jekka\Tiktok;
 
 use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\RequestOptions;
-use Jekka2024\Tiktok\Errors\AuthorizationException;
+use Jekka\Tiktok\Errors\AuthorizationException;
 
 class Auth
 {

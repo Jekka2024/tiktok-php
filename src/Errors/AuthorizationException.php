@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jekka2024\Tiktok\Errors;
+namespace Jekka\Tiktok\Errors;
 
 class AuthorizationException extends TiktokShopException
 {

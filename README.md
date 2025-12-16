@@ -11,12 +11,12 @@ Compatible with Global interface
 Install with Composer
 
 ```shell
-composer require jekka2024/tiktok-php
+composer require jekka/tiktok-php
 ```
 
 Update Composer
 
 ```shell
-composer update jekka2024/tiktok-php --ignore-platform-req=ext-imap --ignore-platform-req=php
+composer update jekka/tiktok-php --ignore-platform-req=ext-imap --ignore-platform-req=php
  ```
 

@@ -8,35 +8,35 @@
  * file that was distributed with this source code.
  */
 
-namespace Jekka2024\Tiktok;
+namespace Jekka\Tiktok;
 
-use Jekka2024\Tiktok\Errors\ResponseException;
-use Jekka2024\Tiktok\Resources\AffiliateCreator;
-use Jekka2024\Tiktok\Resources\AffiliatePartner;
-use Jekka2024\Tiktok\Resources\AffiliateSeller;
-use Jekka2024\Tiktok\Resources\Analytics;
-use Jekka2024\Tiktok\Resources\CustomerService;
-use Jekka2024\Tiktok\Resources\FulfilledByTiktok;
+use Jekka\Tiktok\Errors\ResponseException;
+use Jekka\Tiktok\Resources\AffiliateCreator;
+use Jekka\Tiktok\Resources\AffiliatePartner;
+use Jekka\Tiktok\Resources\AffiliateSeller;
+use Jekka\Tiktok\Resources\Analytics;
+use Jekka\Tiktok\Resources\CustomerService;
+use Jekka\Tiktok\Resources\FulfilledByTiktok;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\RequestOptions;
-use Jekka2024\Tiktok\Errors\TiktokShopException;
-use Jekka2024\Tiktok\Resources\Event;
-use Jekka2024\Tiktok\Resources\Finance;
-use Jekka2024\Tiktok\Resources\Fulfillment;
-use Jekka2024\Tiktok\Resources\GlobalProduct;
-use Jekka2024\Tiktok\Resources\Logistic;
-use Jekka2024\Tiktok\Resources\Order;
-use Jekka2024\Tiktok\Resources\Product;
-use Jekka2024\Tiktok\Resources\Promotion;
-use Jekka2024\Tiktok\Resources\ReturnRefund;
-use Jekka2024\Tiktok\Resources\Seller;
-use Jekka2024\Tiktok\Resources\Authorization;
-use Jekka2024\Tiktok\Resources\Supplychain;
-use Jekka2024\Tiktok\Signer\GlobalSigner;
-use Jekka2024\Tiktok\Signer\ShopSigner;
+use Jekka\Tiktok\Errors\TiktokShopException;
+use Jekka\Tiktok\Resources\Event;
+use Jekka\Tiktok\Resources\Finance;
+use Jekka\Tiktok\Resources\Fulfillment;
+use Jekka\Tiktok\Resources\GlobalProduct;
+use Jekka\Tiktok\Resources\Logistic;
+use Jekka\Tiktok\Resources\Order;
+use Jekka\Tiktok\Resources\Product;
+use Jekka\Tiktok\Resources\Promotion;
+use Jekka\Tiktok\Resources\ReturnRefund;
+use Jekka\Tiktok\Resources\Seller;
+use Jekka\Tiktok\Resources\Authorization;
+use Jekka\Tiktok\Resources\Supplychain;
+use Jekka\Tiktok\Signer\GlobalSigner;
+use Jekka\Tiktok\Signer\ShopSigner;
 use Psr\Http\Message\RequestInterface;
 
 /**
