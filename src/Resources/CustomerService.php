@@ -98,7 +98,7 @@ class CustomerService extends Resource
         $query = array_merge([
             'page_size' => 20,
         ], $query);
-        return $this->call('POST', 'conversations', [
+        return $this->call('POST', 'sessions/search', [
             RequestOptions::QUERY => $query,
             RequestOptions::JSON => $body
         ]);
