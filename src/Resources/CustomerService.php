@@ -87,4 +87,20 @@ class CustomerService extends Resource
             ]
         ]);
     }
+
+    public function getConversation($conversation_id)
+    {
+        return $this->call('GET', 'conversations/'.$conversation_id);
+    }
+
+    public function searchSessions($query, $body)
+    {
+        $query = array_merge([
+            'page_size' => 20,
+        ], $query);
+        return $this->call('POST', 'conversations', [
+            RequestOptions::QUERY => $query,
+            RequestOptions::JSON => $body
+        ]);
+    }
 }
