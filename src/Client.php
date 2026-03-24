@@ -163,62 +163,36 @@ class Client
      */
     protected function modifyRequestBeforeSend(RequestInterface $request)
     {
-        $uri  = $request->getUri();
-        $host = $uri->getHost();
-        $path = $uri->getPath();
-
+        $uri = $request->getUri();
         parse_str($uri->getQuery(), $query);
 
-        // 判断是否 Global API
-        $isGlobal =
-            (strpos($host, 'tiktokglobalshop.com') !== false)
-            || (strpos($path, '/global/') === 0);
-
-        /* ========== Global API ========== */
-        if ($isGlobal) {
-            $timestamp = time();
-
-            // 设置 Global Header
-            $request = $request
-                ->withHeader('x-tt-access-token', $this->access_token)
-                ->withHeader('x-tt-timestamp', (string) $timestamp);
-
-            // 仅使用“原始 query”参与签名
-            $signer  = new GlobalSigner($this->app_secret);
-            $request = $signer->sign($request, $query, $timestamp);
-
-            // 写回 query（如果原本有）
-            if (!empty($query)) {
-                $uri = $uri->withQuery(
-                    http_build_query($query, '', '&', PHP_QUERY_RFC3986)
-                );
-                $request = $request->withUri($uri);
-            }
-            return $request;
-        }
-
-        /* ========== Shop API ========== */
-
-        $query['app_key']   = $this->app_key;
+        $query['app_key'] = $this->getAppKey();
         $query['timestamp'] = time();
 
-        if ($this->access_token) {
-            $request = $request->withHeader(
-                'x-tts-access-token',
-                $this->access_token
-            );
+        if ($this->access_token && !isset($query['x-tts-access-token'])) {
+            $request = $request->withHeader('x-tts-access-token', $this->access_token);
         }
 
-        if ($this->shop_cipher) {
+        if ($this->shop_cipher && !isset($query['shop_cipher'])) {
             $query['shop_cipher'] = $this->shop_cipher;
         }
 
-        $signer = new ShopSigner($this->app_secret);
-        $signer->sign($request, $query);
+        // shop_cipher is not allowed in some api
+        if (preg_match('/^\/product\/(\d{6})\/(compliance|global_products|files\/upload|images\/upload)/', $uri->getPath())
+            || ($request->getMethod() === 'POST' && preg_match('/^\/product\/(\d{6})\/(brands)/', $uri->getPath()))
+            || preg_match('/^\/(authorization|seller)\/(\d{6})\//', $uri->getPath())
+        ) {
+            unset($query['shop_cipher']);
+        }
 
-        $uri = $uri->withQuery(
-            http_build_query($query, '', '&', PHP_QUERY_RFC3986)
-        );
+        $this->prepareSignature($request, $query);
+
+        $uri = $uri->withQuery(http_build_query($query));
+
+        // set default content-type to application/json
+        if (!$request->getHeaderLine('content-type')) {
+            $request = $request->withHeader('content-type', 'application/json');
+        }
 
         return $request->withUri($uri);
     }

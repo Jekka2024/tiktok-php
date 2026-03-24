@@ -11,10 +11,4 @@
     <option name="transferred" value="true" />
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
-  <component name="PhpStanOptionsConfiguration">
-    <option name="transferred" value="true" />
-  </component>
-  <component name="PsalmOptionsConfiguration">
-    <option name="transferred" value="true" />
-  </component>
 </project>
