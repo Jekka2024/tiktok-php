@@ -30,7 +30,7 @@ class ReturnRefund extends Resource
 
     public function approveCancellation($cancel_id)
     {
-        return $this->call('POST', 'cancellations/'.$cancel_id.'/approve', [
+        return $this->call('POST', 'cancellations/' . $cancel_id . '/approve', [
             RequestOptions::QUERY => [
                 'idempotency_key' => $this->generateIdempotencyKey(),
             ],
@@ -39,7 +39,7 @@ class ReturnRefund extends Resource
 
     public function rejectCancellation($cancel_id, $params)
     {
-        return $this->call('POST', 'cancellations/'.$cancel_id.'/reject', [
+        return $this->call('POST', 'cancellations/' . $cancel_id . '/reject', [
             RequestOptions::QUERY => [
                 'idempotency_key' => $this->generateIdempotencyKey(),
             ],
@@ -60,7 +60,7 @@ class ReturnRefund extends Resource
 
     public function approveReturn($return_id, $params)
     {
-        return $this->call('POST', 'returns/'.$return_id.'/approve', [
+        return $this->call('POST', 'returns/' . $return_id . '/approve', [
             RequestOptions::QUERY => [
                 'idempotency_key' => $this->generateIdempotencyKey(),
             ],
@@ -70,7 +70,7 @@ class ReturnRefund extends Resource
 
     public function rejectReturn($return_id, $params)
     {
-        return $this->call('POST', 'returns/'.$return_id.'/reject', [
+        return $this->call('POST', 'returns/' . $return_id . '/reject', [
             RequestOptions::QUERY => [
                 'idempotency_key' => $this->generateIdempotencyKey(),
             ],
@@ -80,7 +80,7 @@ class ReturnRefund extends Resource
 
     public function getAftersaleEligibility($order_id, $query = [])
     {
-        return $this->call('GET', 'orders/'.$order_id.'/aftersale_eligibility', [
+        return $this->call('GET', 'orders/' . $order_id . '/aftersale_eligibility', [
             RequestOptions::QUERY => $query
         ]);
     }
@@ -101,7 +101,7 @@ class ReturnRefund extends Resource
 
     public function getReturnRecords($return_id)
     {
-        return $this->call('GET', 'returns/'.$return_id.'/records');
+        return $this->call('GET', 'returns/' . $return_id . '/records');
     }
 
     public function cancelOrder($params)
@@ -129,5 +129,12 @@ class ReturnRefund extends Resource
     private function generateIdempotencyKey()
     {
         return uniqid('', true);
+    }
+
+    public function getDecisionEligibility($return_or_cancel_id, $query = [])
+    {
+        return $this->call('GET', 'decision_eligibility/', [
+            RequestOptions::QUERY => $query
+        ]);
     }
 }
